@@ -186,19 +186,7 @@ const PartDemandForecastChart: React.FC<PartDemandForecastChartProps> = ({ endpo
 
   return (
 
-    <Box sx={{ 
-      flex: 1,
-      width: '100%',
-      overflow: 'hidden',
-      display: 'grid',
-      gridTemplateColumns: { 
-        xs: '1fr', 
-        md: 'repeat(2, 1fr)' 
-      },
-      gap: 2,
-      p: 2,
-      pt: 0
-    }}>
+    <Box>
       <Typography variant="h6" className="mb-4">
         {title}
       </Typography>
