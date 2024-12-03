@@ -1,7 +1,6 @@
 // client/src/pages/forecast.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, Typography, Tab, Tabs, useTheme, Paper } from '@pankod/refine-mui';
-import { useList } from '@pankod/refine-core';
 import ForecastChart from '../components/common/ForecastChart';
 import PartDemandForecastChart from 'components/common/PartDemandForecast';
 import TurnaroundAnalysis from 'components/common/TurnaroundAnalysis';
@@ -10,7 +9,7 @@ import useDynamicHeight from 'hooks/useDynamicHeight';
 const Forecast: React.FC = () => {
     const theme = useTheme();
     const [activeTab, setActiveTab] = useState(0);
-    const containerHeight = useDynamicHeight();
+
 
     const handleTabChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
         setActiveTab(newValue);
@@ -20,10 +19,10 @@ const Forecast: React.FC = () => {
         <Paper 
         elevation={3} 
         sx={{ 
+            width:'100%',
           display: 'flex',
           flexDirection: 'column',
           m: 2,
-        
         }}
       >
             <Typography variant="h4"sx={{ 
@@ -48,9 +47,19 @@ const Forecast: React.FC = () => {
                 <Tab label="Turnaround Analysis" />
             </Tabs>
 
+
             <Box sx={{ 
-        p: 2,
+        flex: 1,
+        width: '100%',
+        overflow: 'hidden',
+        display: 'grid',
+        gridTemplateColumns: { 
+          xs: '1fr', 
+          md: 'repeat(2, 1fr)' 
+        },
         gap: 2,
+        p: 2,
+        pt: 0
       }}>
 
                 {activeTab === 0 && <PartDemandForecastChart endpoint="/api/forecasting/parts-demand" title="Part Demand Forecast" />}
